@@ -5,9 +5,21 @@ const bodyPerser = require("body-parser");
 
 const app = express();
 
+const myMiddleware = (req, res, next) => {
+  console.log("I am middleware");
+
+  next();
+};
+
 app.use(bodyPerser.urlencoded({ extended: false }));
 
 app.use(bodyPerser.json());
+
+app.use(myMiddleware);
+
+app.use((err, req, res, next) => {
+  res.status(500).send("Something broke!");
+});
 
 app.get("/", (req, res) => {
   res.statusCode = 200;
@@ -22,6 +34,8 @@ app.get("/", (req, res) => {
 // });
 
 app.get("/register", (req, res) => {
+  console.log("your are allrady register");
+
   // res.send("hello");
   res.sendFile(__dirname + "/views/register.html");
 });
