@@ -2,6 +2,7 @@
 
 /node_modules
 /areaCalculatorProject
+/MVC-Architecture
 
 package-lock.json
 
