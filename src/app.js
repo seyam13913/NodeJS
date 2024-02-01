@@ -12,7 +12,7 @@ const myMiddleware = (req, res, next) => {
   next();
 };
 
-app.use(bodyPerser.urlencoded({ extended: false }));
+app.use(bodyPerser.urlencoded({ extended: true }));
 
 app.use(bodyPerser.json());
 
